@@ -1,0 +1,16 @@
+diff --git a/Sources/SwitchRPC/source/main.cpp b/Sources/SwitchRPC/source/main.cpp
+index 7adfa8e..05fa208 100644
+--- a/Sources/SwitchRPC/source/main.cpp
++++ b/Sources/SwitchRPC/source/main.cpp
+@@ -171,8 +171,9 @@ int main(int argc, char* argv[])
+         ueventCreate(&g_pscWakeMain, true);
+         ueventCreate(&g_sleepPrepDone, true);
+         static const u32 pscDeps[] = { PscPmModuleId_Fs, PscPmModuleId_Nifm };
+-        Result prc = pscmGetPmModule(&g_pscModule, (PscPmModuleId)0x5250, pscDeps,
+-                                     sizeof(pscDeps) / sizeof(pscDeps[0]), true);
++        (void)pscDeps;
++        // TEST: PSC registration disabled to check if it causes the 2001-0132 boot crash
++        Result prc = 1;
+         if (R_SUCCEEDED(prc)) {
+             if (R_SUCCEEDED(threadCreate(&g_pscThread, pscThreadFunc, NULL, NULL, 0x4000, 0x2C, -2))) {
+                 threadStart(&g_pscThread);
