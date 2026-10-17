@@ -87,9 +87,9 @@ void __appInit(void)
         .udp_tx_buf_size = 0x1000,
         .udp_rx_buf_size = 0x1000,
 
-        .sb_efficiency = 4,
+        .sb_efficiency = 2,
 
-        .num_bsd_sessions = 3,
+        .num_bsd_sessions = 1,
         .bsd_service_type = BsdServiceType_System,
     };
     rc = socketInitialize(&sockConf);
